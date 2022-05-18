@@ -7,17 +7,19 @@
   <title>Tic Tac Toe</title>
   <link href="/dist/output.css" rel="stylesheet">
 </head>
-<body class="flex justify-center items-center bg-slate-900 h-screen">
+<body class="flex flex-col justify-center items-center gap-12 bg-slate-900 h-screen">
+  <h1 id="current-player" class="text-white">player1's turn!</h1>
   <main class="grid grid-cols-3 grid-rows-3 h-96 w-96">
-    <div class="border-2 border-black border-t-0 border-l-0 font-bold text-9xl text-center cursor-pointer rounded-tl hover:bg-slate-800 transition-all"></div>
-    <div class="border-2 border-black border-t-0 font-bold text-9xl text-center cursor-pointer hover:bg-slate-800 transition-all"></div>
-    <div class="border-2 border-black border-t-0 border-r-0 font-bold text-9xl text-center cursor-pointer rounded-tr hover:bg-slate-800 transition-all"></div>
-    <div class="border-2 border-black border-l-0 font-bold text-9xl text-center cursor-pointer hover:bg-slate-800 transition-all"></div>
-    <div class="border-2 border-black font-bold text-9xl text-center cursor-pointer hover:bg-slate-800 transition-all"></div>
-    <div class="border-2 border-black border-r-0 font-bold text-9xl text-center cursor-pointer hover:bg-slate-800 transition-all"></div>
-    <div class="border-2 border-black border-l-0 border-b-0 font-bold text-9xl text-center cursor-pointer rounded-bl hover:bg-slate-800 transition-all"></div>
-    <div class="border-2 border-black border-b-0 font-bold text-9xl text-center cursor-pointer hover:bg-slate-800 transition-all"></div>
-    <div class="border-2 border-black border-r-0 border-b-0 font-bold text-9xl text-center cursor-pointer rounded-br hover:bg-slate-800 transition-all"></div>
+    <div class="cell border-2 border-black border-t-0 border-l-0 font-bold text-9xl text-center cursor-pointer rounded-tl hover:bg-slate-800 transition-all"></div>
+    <div class="cell border-2 border-black border-t-0 font-bold text-9xl text-center cursor-pointer hover:bg-slate-800 transition-all"></div>
+    <div class="cell border-2 border-black border-t-0 border-r-0 font-bold text-9xl text-center cursor-pointer rounded-tr hover:bg-slate-800 transition-all"></div>
+    <div class="cell border-2 border-black border-l-0 font-bold text-9xl text-center cursor-pointer hover:bg-slate-800 transition-all"></div>
+    <div class="cell border-2 border-black font-bold text-9xl text-center cursor-pointer hover:bg-slate-800 transition-all"></div>
+    <div class="cell border-2 border-black border-r-0 font-bold text-9xl text-center cursor-pointer hover:bg-slate-800 transition-all"></div>
+    <div class="cell border-2 border-black border-l-0 border-b-0 font-bold text-9xl text-center cursor-pointer rounded-bl hover:bg-slate-800 transition-all"></div>
+    <div class="cell border-2 border-black border-b-0 font-bold text-9xl text-center cursor-pointer hover:bg-slate-800 transition-all"></div>
+    <div class="cell border-2 border-black border-r-0 border-b-0 font-bold text-9xl text-center cursor-pointer rounded-br hover:bg-slate-800 transition-all"></div>
   </main>
+  <script src="./js/main.js"></script>
 </body>
 </html>
