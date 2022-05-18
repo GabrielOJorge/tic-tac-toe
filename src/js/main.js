@@ -16,10 +16,10 @@ const gameBoard = (function() {
     return { changePlayer, };
   })();
 
-  const cells = document.querySelectorAll(".cell");
+  const spots = document.querySelectorAll(".spot");
 
-  cells.forEach(cell => cell.addEventListener("click", () => {
-    currentPlayer === "player1" ? cell.textContent = "X" : cell.textContent = "O";
+  spots.forEach(spot => spot.addEventListener("click", () => {
+    currentPlayer === "player1" ? spot.textContent = "X" : spot.textContent = "O";
     gameController.changePlayer();
   }));
 })();
