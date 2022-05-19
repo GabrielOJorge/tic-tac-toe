@@ -22,13 +22,14 @@ const gameBoard = (function() {
   };
 
   const markSpot = spot => {
-    currentPlayer === "player1" ? spot.firstChild.textContent = "X" : spot.firstChild.textContent = "O";
-    spot.firstChild.classList.remove("scale-0");
+    if (checkSpotTextCont(spot) === true) {
+      currentPlayer === "player1" ? spot.firstChild.textContent = "X" : spot.firstChild.textContent = "O";
+      spot.firstChild.classList.remove("scale-0");
+    }
   };
 
   spots.forEach(spot => spot.addEventListener("click", () => {
-    if (checkSpotTextCont(spot) === true) markSpot(spot);
-
+    markSpot(spot);
     gameController.changePlayer();
   }));
 })();
