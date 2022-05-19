@@ -18,8 +18,15 @@ const gameBoard = (function() {
 
   const spots = document.querySelectorAll(".spot");
 
+  const checkSpotTextCont = spot => {
+    if (spot.textContent === "") return true;
+  };
+
+  const markSpot = (spot) => currentPlayer === "player1" ? spot.textContent = "X" : spot.textContent = "O";
+
   spots.forEach(spot => spot.addEventListener("click", () => {
-    currentPlayer === "player1" ? spot.textContent = "X" : spot.textContent = "O";
+    if (checkSpotTextCont(spot) === true) markSpot(spot);
+
     gameController.changePlayer();
   }));
 })();
