@@ -1,4 +1,5 @@
 const gameBoard = (function() {
+  const spots = document.querySelectorAll(".spot");
   let currentPlayer = "player1";
 
   const displayCurrentPlayer = () => {
@@ -16,13 +17,14 @@ const gameBoard = (function() {
     return { changePlayer, };
   })();
 
-  const spots = document.querySelectorAll(".spot");
-
   const checkSpotTextCont = spot => {
     if (spot.textContent === "") return true;
   };
 
-  const markSpot = (spot) => currentPlayer === "player1" ? spot.textContent = "X" : spot.textContent = "O";
+  const markSpot = spot => {
+    currentPlayer === "player1" ? spot.firstChild.textContent = "X" : spot.firstChild.textContent = "O";
+    spot.firstChild.classList.remove("scale-0");
+  };
 
   spots.forEach(spot => spot.addEventListener("click", () => {
     if (checkSpotTextCont(spot) === true) markSpot(spot);
