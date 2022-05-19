@@ -25,11 +25,9 @@ const gameBoard = (function() {
     if (checkSpotTextCont(spot) === true) {
       currentPlayer === "player1" ? spot.firstChild.textContent = "X" : spot.firstChild.textContent = "O";
       spot.firstChild.classList.remove("scale-0");
+      gameController.changePlayer();
     }
   };
 
-  spots.forEach(spot => spot.addEventListener("click", () => {
-    markSpot(spot);
-    gameController.changePlayer();
-  }));
+  spots.forEach(spot => spot.addEventListener("click", () => markSpot(spot)));
 })();
