@@ -45,5 +45,11 @@ const gameBoard = (function() {
     }
   };
 
-  spots.forEach(spot => spot.addEventListener("click", () => markSpot(spot)));
+  spots.forEach(spot => spot.addEventListener("click", () => {
+    markSpot(spot);
+
+    spotsArr.map(spot => gameFlow.pushToSpotsMarkers(spot.id, spot.textContent));
+
+    gameFlow.checkSpotsMarkers();
+  }));
 })();
