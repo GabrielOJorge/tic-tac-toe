@@ -17,6 +17,22 @@ const gameBoard = (function() {
     return { changePlayer, };
   })();
 
+  const gameFlow = (function() {
+    const spotsMarkers = {};
+
+    const pushToSpotsMarkers = (id, marker) => {
+      spotsMarkers[id] = marker;
+    };
+
+    const checkSpotsMarkers = () => {
+      if (spotsMarkers["spot-1"] === spotsMarkers["spot-2"] && spotsMarkers["spot-1"] === spotsMarkers["spot-3"]) {
+        console.log("Victory!")
+      }
+    };
+
+    return { spotsMarkers, pushToSpotsMarkers, checkSpotsMarkers }
+  })();
+
   const checkSpotTextCont = spot => {
     if (spot.textContent === "") return true;
   };
