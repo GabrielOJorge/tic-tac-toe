@@ -1,13 +1,13 @@
 const gameBoard = (function() {
   const spots = document.querySelectorAll(".spot");
   let currentPlayer = "player1";
+  let spotsArr = Array.from(spots);
 
   const displayCurrentPlayer = () => {
     document.getElementById("current-player").textContent = `${currentPlayer}'s turn!`;
   };
 
   const gameController = (function() {
-
     const changePlayer = () => {
       currentPlayer === "player1" ? currentPlayer = "player2" : currentPlayer = "player1";
 
