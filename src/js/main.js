@@ -1,11 +1,18 @@
 const gameBoard = (function() {
   const spots = document.querySelectorAll(".spot");
   let currentPlayer = "player1";
-  let spotsArr = Array.from(spots);
+  let currentMarker;
 
-  const displayCurrentPlayer = () => {
-    document.getElementById("current-player").textContent = `${currentPlayer}'s turn!`;
-  };
+  const winningCombinations = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+  ]
 
   const gameController = (function() {
     const changePlayer = () => {
@@ -17,20 +24,20 @@ const gameBoard = (function() {
     return { changePlayer, };
   })();
 
+  const displayCurrentPlayer = () => {
+    document.getElementById("current-player").textContent = `${currentPlayer}'s turn!`;
+  };
+
   const gameFlow = (function() {
-    const spotsMarkers = {};
-
-    const pushToSpotsMarkers = (id, marker) => {
-      spotsMarkers[id] = marker;
+    const checkWin = (currentMarker) => {
+      return winningCombinations.some(combination => {
+        return combination.every(index => {
+          return spots[index].textContent.includes(currentMarker);
+        });
+      });
     };
 
-    const checkSpotsMarkers = () => {
-      if (spotsMarkers["spot-1"] === spotsMarkers["spot-2"] && spotsMarkers["spot-1"] === spotsMarkers["spot-3"]) {
-        console.log("Victory!")
-      }
-    };
-
-    return { spotsMarkers, pushToSpotsMarkers, checkSpotsMarkers }
+    return { checkWin, }
   })();
 
   const checkSpotTextCont = spot => {
@@ -46,10 +53,13 @@ const gameBoard = (function() {
   };
 
   spots.forEach(spot => spot.addEventListener("click", () => {
+    let previousPlayer = currentPlayer;
+    currentMarker = currentPlayer === "player1" ? "X" : "O";
+
     markSpot(spot);
-
-    spotsArr.map(spot => gameFlow.pushToSpotsMarkers(spot.id, spot.textContent));
-
-    gameFlow.checkSpotsMarkers();
+    
+    if (gameFlow.checkWin(currentMarker)) {
+      document.getElementById("current-player").textContent = `${previousPlayer} wins!`
+    }
   }));
 })();
