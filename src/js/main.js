@@ -40,16 +40,9 @@ const gameBoard = (function() {
     return { checkWin, }
   })();
 
-  const checkSpotTextCont = spot => {
-    if (spot.textContent === "") return true;
-  };
-
   const markSpot = spot => {
-    if (checkSpotTextCont(spot) === true) {
-      currentPlayer === "player1" ? spot.firstChild.textContent = "X" : spot.firstChild.textContent = "O";
-      spot.firstChild.classList.remove("scale-0");
-      gameController.changePlayer();
-    }
+    currentPlayer === "player1" ? spot.firstChild.textContent = "X" : spot.firstChild.textContent = "O";
+    spot.firstChild.classList.remove("scale-0");
   };
 
   spots.forEach(spot => spot.addEventListener("click", () => {
@@ -57,6 +50,8 @@ const gameBoard = (function() {
     currentMarker = currentPlayer === "player1" ? "X" : "O";
 
     markSpot(spot);
+    
+    gameController.changePlayer();
     
     if (gameFlow.checkWin(currentMarker)) {
       document.getElementById("current-player").textContent = `${previousPlayer} wins!`
