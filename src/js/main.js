@@ -17,16 +17,10 @@ const gameBoard = (function() {
   const gameController = (function() {
     const changePlayer = () => {
       currentPlayer === "player1" ? currentPlayer = "player2" : currentPlayer = "player1";
-
-      displayCurrentPlayer();
     };
     
     return { changePlayer, };
   })();
-
-  const displayCurrentPlayer = () => {
-    document.getElementById("current-player").textContent = `${currentPlayer}'s turn!`;
-  };
 
   const gameFlow = (function() {
     const checkWin = (currentMarker) => {
@@ -54,7 +48,7 @@ const gameBoard = (function() {
     gameController.changePlayer();
     
     if (gameFlow.checkWin(currentMarker)) {
-      document.getElementById("current-player").textContent = `${previousPlayer} wins!`
+      console.log("WInner");
     }
-  }));
+  }, {once: true}));
 })();
