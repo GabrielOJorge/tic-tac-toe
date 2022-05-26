@@ -18,8 +18,18 @@ const gameBoard = (function() {
     const changePlayer = () => {
       currentPlayer === "player1" ? currentPlayer = "player2" : currentPlayer = "player1";
     };
+
+    const displayOverlay = (previousPlayer) => {
+      const overlay = document.getElementById("overlay");
+      const board = document.getElementById("board");
+      const winningMsg = document.getElementById("winning-msg");
+
+      overlay.classList.remove("scale-0");
+      board.classList.add("scale-0");
+      winningMsg.textContent = `${previousPlayer} wins!`.toUpperCase();
+    };
     
-    return { changePlayer, };
+    return { changePlayer, displayOverlay, };
   })();
 
   const gameFlow = (function() {
@@ -48,7 +58,7 @@ const gameBoard = (function() {
     gameController.changePlayer();
     
     if (gameFlow.checkWin(currentMarker)) {
-      console.log("WInner");
+      gameController.displayOverlay(previousPlayer);
     }
   }, {once: true}));
 })();
