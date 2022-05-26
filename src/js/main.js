@@ -28,6 +28,10 @@ const gameBoard = (function() {
       board.classList.add("scale-0");
       winningMsg.textContent = `${previousPlayer} wins!`.toUpperCase();
     };
+
+    const endGame = () => {
+
+    };
     
     return { changePlayer, displayOverlay, };
   })();
