@@ -1,4 +1,5 @@
 const gameBoard = (function() {
+  const gameBoard = document.getElementById("gameBoard");
   const spots = document.querySelectorAll(".spot");
   let currentPlayer = "player1";
   let currentMarker;
@@ -21,12 +22,8 @@ const gameBoard = (function() {
     };
 
     const displayOverlay = (previousPlayer) => {
-      const overlay = document.getElementById("overlay");
-      const board = document.getElementById("board");
-      const winningMsg = document.getElementById("winning-msg");
-
       overlay.classList.remove("scale-0");
-      board.classList.add("scale-0");
+      gameBoard.classList.add("scale-0");
       winningMsg.textContent = `${previousPlayer} wins!`.toUpperCase();
     };
 
@@ -52,7 +49,7 @@ const gameBoard = (function() {
 
     const restartGame = () => {
       overlay.classList.add("scale-0");
-      board.classList.remove("scale-0");
+      gameBoard.classList.remove("scale-0");
 
       spots.forEach(spot => {
         spot.firstChild.textContent = "";
