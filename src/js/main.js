@@ -51,8 +51,17 @@ const gameBoard = (function() {
         };
       }, {once: true}));
     };
-    
-    return { changePlayer, displayOverlay, startGame, };
+
+    const restartGame = () => {
+      overlay.classList.add("scale-0");
+      board.classList.remove("scale-0");
+      spots.forEach(spot => spot.firstChild.textContent = "");
+      currentPlayer = "player1";
+
+      gameController.startGame();
+    };
+
+    return { changePlayer, displayOverlay, startGame, restartGame, };
   })();
 
   const gameFlow = (function() {
@@ -66,6 +75,8 @@ const gameBoard = (function() {
 
     return { checkWin, }
   })();
+
+  restartBtn.addEventListener("click", gameController.restartGame);
 
   gameController.startGame();
 })();
