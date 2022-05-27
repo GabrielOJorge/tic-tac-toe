@@ -13,7 +13,7 @@ const gameBoard = (function() {
     [2, 5, 8],
     [0, 4, 8],
     [2, 4, 6]
-  ]
+  ];
 
   const gameController = (function() {
     const changePlayer = () => {
@@ -55,7 +55,11 @@ const gameBoard = (function() {
     const restartGame = () => {
       overlay.classList.add("scale-0");
       board.classList.remove("scale-0");
-      spots.forEach(spot => spot.firstChild.textContent = "");
+      spots.forEach(spot => {
+        spot.firstChild.textContent = "";
+        spot.firstChild.classList.add("scale-0");
+      });
+
       currentPlayer = "player1";
 
       gameController.startGame();
