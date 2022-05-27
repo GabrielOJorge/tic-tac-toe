@@ -21,6 +21,16 @@ const gameBoard = (function() {
       currentPlayer === "player1" ? currentPlayer = "player2" : currentPlayer = "player1";
     };
 
+    const displayCurrentPlayer = () => {
+      if (currentPlayer === "player1") {
+        player1.classList.add("animate-pulse");
+        player2.classList.remove("animate-pulse");
+      } else {
+        player1.classList.remove("animate-pulse");
+        player2.classList.add("animate-pulse");
+      }
+    };
+
     const displayOverlay = (previousPlayer) => {
       overlay.classList.remove("scale-0");
       gameBoard.classList.add("scale-0");
@@ -40,6 +50,8 @@ const gameBoard = (function() {
         currentMarker = currentPlayer === "player1" ? "X" : "O";
     
         markSpot(spot);
+
+        displayCurrentPlayer();
         
         if (gameFlow.checkWin(currentMarker)) {
           gameController.displayOverlay(previousPlayer);
