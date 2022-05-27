@@ -13,20 +13,22 @@
 <body class="flex flex-col justify-center items-center gap-12 bg-gray-500 h-screen font-Poppins">
 
   <div id="overlay" class="absolute flex flex-col justify-center items-center gap-9 scale-0 transition-all select-none">
-    <h1 id="winning-msg" class="text-white text-6xl animate-bounce"></h1>
+    <h1 id="winningMsg" class="text-white text-6xl animate-bounce"></h1>
     <button id="restart-btn" class="text-white text-4xl p-2 border-4 border-white rounded-xl hover:bg-white hover:text-gray-500 active:translate-y-1 transition-all">Restart</button>
   </div>
 
-  <main id="board" class="grid grid-cols-3 grid-rows-3 h-96 w-96">
-    <div class="spot border-2 border-black border-t-0 border-l-0 font-bold text-9xl text-center cursor-pointer rounded-tl hover:bg-gray-400 transition-all"><div class="h-full w-full scale-0 transition-all select-none"></div></div>
-    <div class="spot border-2 border-black border-t-0 font-bold text-9xl text-center cursor-pointer hover:bg-gray-400 transition-all"><div class="h-full w-full scale-0 transition-all select-none"></div></div>
-    <div class="spot border-2 border-black border-t-0 border-r-0 font-bold text-9xl text-center cursor-pointer rounded-tr hover:bg-gray-400 transition-all"><div class="h-full w-full scale-0 transition-all select-none"></div></div>
-    <div class="spot border-2 border-black border-l-0 font-bold text-9xl text-center cursor-pointer hover:bg-gray-400 transition-all"><div class="h-full w-full scale-0 transition-all select-none"></div></div>
-    <div class="spot border-2 border-black font-bold text-9xl text-center cursor-pointer hover:bg-gray-400 transition-all"><div class="h-full w-full scale-0 transition-all select-none"></div></div>
-    <div class="spot border-2 border-black border-r-0 font-bold text-9xl text-center cursor-pointer hover:bg-gray-400 transition-all"><div class="h-full w-full scale-0 transition-all select-none"></div></div>
-    <div class="spot border-2 border-black border-l-0 border-b-0 font-bold text-9xl text-center cursor-pointer rounded-bl hover:bg-gray-400 transition-all"><div class="h-full w-full scale-0 transition-all select-none"></div></div>
-    <div class="spot border-2 border-black border-b-0 font-bold text-9xl text-center cursor-pointer hover:bg-gray-400 transition-all"><div class="h-full w-full scale-0 transition-all select-none"></div></div>
-    <div class="spot border-2 border-black border-r-0 border-b-0 font-bold text-9xl text-center cursor-pointer rounded-br hover:bg-gray-400 transition-all"><div class="h-full w-full scale-0 transition-all select-none"></div></div>
+  <main id="board" class="flex flex-col items-center gap-20">
+    <div class="grid grid-cols-3 grid-rows-3 h-96 w-96">
+      <div class="spot border-2 border-gray-900 border-t-0 border-l-0 font-bold text-9xl text-center cursor-pointer rounded-tl hover:bg-gray-400 transition-all"><div class="h-full w-full scale-0 transition-all select-none"></div></div>
+      <div class="spot border-2 border-gray-900 border-t-0 font-bold text-9xl text-center cursor-pointer hover:bg-gray-400 transition-all"><div class="h-full w-full scale-0 transition-all select-none"></div></div>
+      <div class="spot border-2 border-gray-900 border-t-0 border-r-0 font-bold text-9xl text-center cursor-pointer rounded-tr hover:bg-gray-400 transition-all"><div class="h-full w-full scale-0 transition-all select-none"></div></div>
+      <div class="spot border-2 border-gray-900 border-l-0 font-bold text-9xl text-center cursor-pointer hover:bg-gray-400 transition-all"><div class="h-full w-full scale-0 transition-all select-none"></div></div>
+      <div class="spot border-2 border-gray-900 font-bold text-9xl text-center cursor-pointer hover:bg-gray-400 transition-all"><div class="h-full w-full scale-0 transition-all select-none"></div></div>
+      <div class="spot border-2 border-gray-900 border-r-0 font-bold text-9xl text-center cursor-pointer hover:bg-gray-400 transition-all"><div class="h-full w-full scale-0 transition-all select-none"></div></div>
+      <div class="spot border-2 border-gray-900 border-l-0 border-b-0 font-bold text-9xl text-center cursor-pointer rounded-bl hover:bg-gray-400 transition-all"><div class="h-full w-full scale-0 transition-all select-none"></div></div>
+      <div class="spot border-2 border-gray-900 border-b-0 font-bold text-9xl text-center cursor-pointer hover:bg-gray-400 transition-all"><div class="h-full w-full scale-0 transition-all select-none"></div></div>
+      <div class="spot border-2 border-gray-900 border-r-0 border-b-0 font-bold text-9xl text-center cursor-pointer rounded-br hover:bg-gray-400 transition-all"><div class="h-full w-full scale-0 transition-all select-none"></div></div>
+    </div>
   </main>
 
   <script src="./src/js/main.js"></script>
