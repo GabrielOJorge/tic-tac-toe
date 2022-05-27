@@ -3,7 +3,6 @@ const gameBoard = (function() {
   const spots = document.querySelectorAll(".spot");
   let currentPlayer = "player1";
   let currentMarker;
-  const restartBtn = document.getElementById("restart-btn");
 
   const winningCombinations = [
     [0, 1, 2],
