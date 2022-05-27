@@ -2,6 +2,7 @@ const gameBoard = (function() {
   const spots = document.querySelectorAll(".spot");
   let currentPlayer = "player1";
   let currentMarker;
+  const restartBtn = document.getElementById("restart-btn");
 
   const winningCombinations = [
     [0, 1, 2],
@@ -29,11 +30,29 @@ const gameBoard = (function() {
       winningMsg.textContent = `${previousPlayer} wins!`.toUpperCase();
     };
 
-    const endGame = () => {
+    const markSpot = spot => {
+      currentPlayer === "player1" ? spot.firstChild.textContent = "X" : spot.firstChild.textContent = "O";
+      spot.firstChild.classList.remove("scale-0");
+    };
 
+    const startGame = () => {
+      spots.forEach(spot => spot.addEventListener("click", () => {
+        console.log(spot.firstChild);
+
+        let previousPlayer = currentPlayer;
+        currentMarker = currentPlayer === "player1" ? "X" : "O";
+    
+        markSpot(spot);
+        
+        gameController.changePlayer();
+        
+        if (gameFlow.checkWin(currentMarker)) {
+          gameController.displayOverlay(previousPlayer);
+        };
+      }, {once: true}));
     };
     
-    return { changePlayer, displayOverlay, };
+    return { changePlayer, displayOverlay, startGame, };
   })();
 
   const gameFlow = (function() {
@@ -48,21 +67,5 @@ const gameBoard = (function() {
     return { checkWin, }
   })();
 
-  const markSpot = spot => {
-    currentPlayer === "player1" ? spot.firstChild.textContent = "X" : spot.firstChild.textContent = "O";
-    spot.firstChild.classList.remove("scale-0");
-  };
-
-  spots.forEach(spot => spot.addEventListener("click", () => {
-    let previousPlayer = currentPlayer;
-    currentMarker = currentPlayer === "player1" ? "X" : "O";
-
-    markSpot(spot);
-    
-    gameController.changePlayer();
-    
-    if (gameFlow.checkWin(currentMarker)) {
-      gameController.displayOverlay(previousPlayer);
-    }
-  }, {once: true}));
+  gameController.startGame();
 })();
