@@ -33,18 +33,16 @@ const gameBoard = (function() {
     const markSpot = spot => {
       currentPlayer === "player1" ? spot.firstChild.textContent = "X" : spot.firstChild.textContent = "O";
       spot.firstChild.classList.remove("scale-0");
+  
+      gameController.changePlayer();
     };
 
     const startGame = () => {
       spots.forEach(spot => spot.addEventListener("click", () => {
-        console.log(spot.firstChild);
-
         let previousPlayer = currentPlayer;
         currentMarker = currentPlayer === "player1" ? "X" : "O";
     
         markSpot(spot);
-        
-        gameController.changePlayer();
         
         if (gameFlow.checkWin(currentMarker)) {
           gameController.displayOverlay(previousPlayer);
@@ -55,6 +53,7 @@ const gameBoard = (function() {
     const restartGame = () => {
       overlay.classList.add("scale-0");
       board.classList.remove("scale-0");
+
       spots.forEach(spot => {
         spot.firstChild.textContent = "";
         spot.firstChild.classList.add("scale-0");
