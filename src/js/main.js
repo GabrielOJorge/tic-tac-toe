@@ -18,17 +18,23 @@ const gameBoard = (function() {
   const gameController = (function() {
     const startGame = () => {
       spots.forEach(spot => spot.addEventListener("click", () => {
-        let previousPlayer = currentPlayer;
         currentMarker = currentPlayer === "player1" ? "X" : "O";
-    
-        gameFlow.markSpot(spot);
+        let previousPlayer = currentPlayer;
 
+        gameFlow.markSpot(spot);
+        gameFlow.changePlayer();
         gameFlow.displayCurrentPlayer();
         
-        if (gameFlow.checkWin(currentMarker)) {
-          gameFlow.displayOverlay(previousPlayer);
-        };
+        endGame(previousPlayer);
       }, {once: true}));
+    };
+
+    const endGame = (previousPlayer) => {
+      if (gameFlow.checkWin(currentMarker)) {
+        gameFlow.displayOverlay(`${previousPlayer} wins!`);
+      } else if (!gameFlow.checkWin(currentMarker) && gameFlow.checkDraw()) {
+        gameFlow.displayOverlay("draw!");
+      };
     };
 
     const restartGame = () => {
@@ -58,11 +64,13 @@ const gameBoard = (function() {
       });
     };
 
+    const checkDraw = () => {
+      return Array.from(spots).every(spot => spot.textContent !== "");
+    };
+
     const markSpot = spot => {
       currentPlayer === "player1" ? spot.firstChild.textContent = "X" : spot.firstChild.textContent = "O";
-      spot.firstChild.classList.remove("scale-0");
-  
-      changePlayer();
+      spot.firstChild.classList.remove("scale-0");  
     };
 
     const changePlayer = () => {
@@ -79,13 +87,13 @@ const gameBoard = (function() {
       }
     };
 
-    const displayOverlay = (previousPlayer) => {
+    const displayOverlay = (msg) => {
       overlay.classList.remove("scale-0");
       gameBoard.classList.add("scale-0");
-      winningMsg.textContent = `${previousPlayer} wins!`.toUpperCase();
+      winningMsg.textContent = msg.toUpperCase();
     };
 
-    return { checkWin, markSpot, changePlayer, displayCurrentPlayer, displayOverlay, }
+    return { checkWin, checkDraw, markSpot, changePlayer, displayCurrentPlayer, displayOverlay, }
   })();
 
   restartBtn.addEventListener("click", gameController.restartGame);
